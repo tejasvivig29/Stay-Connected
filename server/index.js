@@ -5,13 +5,6 @@ const port = 3000;
 const mongoose = require("mongoose");
 const {MONGOURI} = require('./keys');
 
-
-mongoose.model('User');
-
-
-
-
-
 mongoose.connect(MONGOURI,{
     useNewUrlParser: true,
     useUnifiedTopology: true
