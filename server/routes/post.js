@@ -36,7 +36,7 @@ router.post('/createpost',requireLogin,(req,res) => {
     })
 })
 
-router.get('/mypost',(req,res) => {
+router.get('/mypost',requirLogin,(req,res) => {
     Post.find({postedBy:req.user._id})
     .populate("postedBy","_id name")
     .then(mypost => {
