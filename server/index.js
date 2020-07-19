@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 5000;
 
 const mongoose = require("mongoose");
 const {MONGOURI} = require('./keys');
@@ -28,5 +28,5 @@ app.use(require('./routes/post'));
 //rLUrDWeIt8txWfkA
 
 app.listen(port, function(req,res){
-    console.log("Application is running on 3000 port");
+    console.log("Application is running on 5000 port");
 })

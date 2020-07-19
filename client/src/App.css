@@ -39,7 +39,8 @@ a{
   margin: 26px auto;
 }
 
-.home{
-  
-
+#toast-container{
+  top:90px !important;
+  right: 30px !important;
+  left: auto !important
 }

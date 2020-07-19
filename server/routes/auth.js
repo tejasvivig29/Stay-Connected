@@ -60,7 +60,8 @@ router.post('/login',(req,res) => {
             if(doMatch){
                 //res.json({message:"User has been logged in"});
                 const token = jwt.sign({_id:saveduser._id},JWT_SECRET);
-                res.json({token});
+                const {_id,name,email} = saveduser
+                res.json({token, user:{_id,name,email}});
             }
             else{
                 return res.status(422).json({error: "Invalid Credentials"});
