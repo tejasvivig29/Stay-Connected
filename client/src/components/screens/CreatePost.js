@@ -2,6 +2,8 @@ import React from 'react';
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import M from 'materialize-css';
+import {useEffect} from 'react';
+
 const CreatePost = () => {
 
   const history = useHistory();
@@ -9,6 +11,35 @@ const CreatePost = () => {
    const[body,setBody] = useState("");
    const[image,setImage] = useState("");
    const[url,setUrl] = useState("");
+
+  useEffect(() => {
+    if(url){
+    fetch("/createpost",{
+      method: "post",
+      headers:{
+          "Content-Type":"application/json",
+          "Authorization": "Bearer "+localStorage.getItem("jwt")
+      },
+      body:JSON.stringify({
+          title,
+          body,
+          pic:url
+      })
+  }).then(res => res.json())
+  .then(data=>{
+      if(data.error){
+          M.toast({html:data.error,classes: "#c62828 red darken-3"})
+      }
+      else{
+        
+        M.toast({html:"Post has been created successfully",classes: "#43a047 green darken-1"})
+        history.push('/login'); 
+    }
+  }).catch(error=>{
+      console.log(error);
+  })
+}
+  },[url])
 
   const postDetails = () => {
     const data = new FormData();
@@ -27,33 +58,7 @@ const CreatePost = () => {
       console.log(err);
     })
 
-    fetch("/createpost",{
-      method: "post",
-      headers:{
-          "Content-Type":"application/json",
-          "Authorization": "Bearer "+localStorage.getItem("jwt")
-      },
-      body:JSON.stringify({
-          title,
-          body,
-          pic:url
-      })
-  }).then(res => res.json())
-  .then(data=>{
-      if(data.error){
-          M.toast({html:data.error,classes: "#c62828 red darken-3"})
-      }
-      else{
-        console.log(data.token)
-        console.log(data.user)
-        localStorage.setItem("jwt",data.token);
-        localStorage.setItem("user",JSON.stringify(data.user));
-        M.toast({html:"Post has been created successfully",classes: "#43a047 green darken-1"})
-        history.push('/login'); 
-    }
-  }).catch(error=>{
-      console.log(error);
-  })
+
 
     }
 
