@@ -8,7 +8,7 @@ import Profile from './components/screens/Profile';
 import Signup from './components/screens/Signup';
 import CreatePost from './components/screens/CreatePost';
 import {useEffect,useReducer,useContext} from 'react';
-import createContext from 'react';
+import {createContext} from 'react';
 import {reducer,initialState} from './reducers/userReducer'
 
 
@@ -33,7 +33,7 @@ const Routing = () => {
     <Route path="/login"><Login /></Route>
     <Route path="/signup"><Signup /></Route>
     <Route path="/profile"><Profile /></Route>
-    <Route path="/createpost"><CreatePost /></Route>
+    <Route path="/createpost"><CreatePost /></Route>  
     </Switch>
    )
 }
