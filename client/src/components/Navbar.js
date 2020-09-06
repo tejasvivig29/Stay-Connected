@@ -1,11 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link,useHistory} from 'react-router-dom';
 import {UserContext} from '../App'
 import {useContext} from 'react'
 
 const Navbar = () => {
     const{state,dispatch} = useContext(UserContext)
-    const renderList = () => {
+    const history = useHistory()
+    const renderList = () => { 
       if(state){
         return [
           <li><Link to="/profile">Profile</Link></li>,
@@ -15,9 +16,10 @@ const Navbar = () => {
           onClick={() => {
             localStorage.clear()
             dispatch({type:"CLEAR"})
+            history.push("/login")
           }}
           >
-
+          Logout
           </button>
         </li>
         ]
