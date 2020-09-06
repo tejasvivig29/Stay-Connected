@@ -9,7 +9,17 @@ const Navbar = () => {
       if(state){
         return [
           <li><Link to="/profile">Profile</Link></li>,
-        <li><Link to="/createpost">Create Post</Link></li>
+        <li><Link to="/createpost">Create Post</Link></li>,
+        <li>
+          <button className="btn #c62828 red darken-3"  
+          onClick={() => {
+            localStorage.clear()
+            dispatch({type:"CLEAR"})
+          }}
+          >
+
+          </button>
+        </li>
         ]
       }
       else{
