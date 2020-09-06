@@ -22,7 +22,7 @@ const Navbar = () => {
     return(
         <nav>
     <div className="nav-wrapper" >
-      <Link to="#" className="brand-logo left">Stay Connected</Link>
+      <Link to={state?"/":"/login"} className="brand-logo left">Stay Connected</Link>
       <ul id="nav-mobile" class="right">
         {renderList()}
       </ul>
