@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState,useEffect,usecontext} from 'react';
+import {useState,useEffect,useContext} from 'react';
 import {UserContext} from '../../App'
 
 const Home = () => {
@@ -30,7 +30,7 @@ const Home = () => {
         }).then(res=>res.json())
         .then(result => {
             const newData = data.map(item => {
-                if(item_id==result._id){
+                if(item._id==result._id){
                     return result
                 }else{
                     return item
@@ -55,7 +55,7 @@ const Home = () => {
         }).then(res=>res.json())
         .then(result => {
             const newData = data.map(item => {
-                if(item_id==result._id){
+                if(item._id==result._id){
                     return result
                 }else{
                     return item
